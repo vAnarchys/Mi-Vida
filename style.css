@@ -141,10 +141,10 @@ body {
 
 .heart-canvas {
   position: relative;
-  width: 420px;
-  height: 420px;
-  max-width: 90vw;
-  max-height: 90vw;
+  width: 560px;
+  height: 560px;
+  max-width: 92vw;
+  max-height: 92vw;
 }
 
 /* Cada rosa en el corazón */
@@ -233,8 +233,10 @@ body {
 ══════════════════════════════════════════ */
 .music-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem 1rem 0;
+  gap: 0.3rem;
 }
 
 .music-btn {
@@ -266,6 +268,18 @@ body {
   background: linear-gradient(135deg, rgba(255,110,180,0.12), rgba(168,85,247,0.1));
   box-shadow: 0 0 28px var(--glow);
 }
+
+.music-tab-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.music-tab-link:hover { opacity: 1; color: var(--accent-1); }
 
 .music-icon {
   font-size: 1.1rem;

@@ -31,17 +31,23 @@
   <!-- ════════════ MÚSICA ════════════ -->
   <div class="music-section">
     <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
-      <span class="music-icon">🎵</span>
-      <span class="music-label">Golden Hour — JVKE</span>
+      <span class="music-icon" id="musicIcon">🎵</span>
+      <span class="music-label" id="musicLabel">▶ Reproducir Golden Hour</span>
     </button>
+    <a class="music-tab-link" id="musicTabLink"
+       href="https://www.youtube.com/watch?v=S8TvXhLtLa0"
+       target="_blank" rel="noopener" title="Abrir en YouTube">
+      ↗ Abrir en YouTube
+    </a>
   </div>
 
   <!-- Iframe oculto de YouTube -->
   <iframe
     id="ytPlayer"
     src=""
-    style="display:none"
-    allow="autoplay"
+    style="display:none; width:1px; height:1px; position:fixed; bottom:0; right:0;"
+    allow="autoplay; encrypted-media"
+    allowfullscreen
     title="Golden Hour music">
   </iframe>
 

@@ -129,25 +129,71 @@ function buildWords() {
   });
 }
 
+// ── Fisher-Yates shuffle ──────────────────
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let shuffledWords = [];
+let shufflePos    = 0;
+
+function nextRandomWord() {
+  // Cuando agotamos el mazo, rebarajamos (evitando que la última y primera sean iguales)
+  if (shufflePos >= shuffledWords.length) {
+    const last = shuffledWords[shuffledWords.length - 1];
+    shuffledWords = shuffle(WORDS);
+    if (shuffledWords[0] === last && shuffledWords.length > 1) {
+      // intercambiar la primera con la segunda para evitar repetir
+      [shuffledWords[0], shuffledWords[1]] = [shuffledWords[1], shuffledWords[0]];
+    }
+    shufflePos = 0;
+  }
+  return shuffledWords[shufflePos++];
+}
+
+function buildWords() {
+  const container = document.getElementById('heartWords');
+  container.innerHTML = '';
+  // Solo necesitamos un único <span> que va cambiando de texto
+  const el = document.createElement('span');
+  el.classList.add('hw');
+  el.id = 'hwSingle';
+  container.appendChild(el);
+  hwEls = [el];
+}
+
 function showNextWord() {
-  if (!hwEls.length) return;
+  const el = document.getElementById('hwSingle');
+  if (!el) return;
 
-  // Ocultar actual
-  hwEls[wordIndex].classList.remove('visible');
+  // Fade out
+  el.classList.remove('visible');
 
-  wordIndex = (wordIndex + 1) % hwEls.length;
-
-  // Mostrar la siguiente
-  hwEls[wordIndex].classList.add('visible');
+  setTimeout(() => {
+    el.textContent = nextRandomWord();
+    // Fade in
+    el.classList.add('visible');
+  }, 1200); // esperar el fade-out de 1.2 s antes de cambiar texto
 
   wordTimer = setTimeout(showNextWord, 3200);
 }
 
 function initWords() {
+  shuffledWords = shuffle(WORDS);
+  shufflePos    = 0;
   buildWords();
   clearTimeout(wordTimer);
-  wordIndex = 0;
-  if (hwEls.length) hwEls[0].classList.add('visible');
+
+  const el = document.getElementById('hwSingle');
+  if (el) {
+    el.textContent = nextRandomWord();
+    el.classList.add('visible');
+  }
   wordTimer = setTimeout(showNextWord, 3200);
 }
 
@@ -176,17 +222,23 @@ let musicPlaying = false;
 function toggleMusic() {
   const btn    = document.getElementById('musicBtn');
   const iframe = document.getElementById('ytPlayer');
-  const label  = btn.querySelector('.music-label');
+  const label  = document.getElementById('musicLabel');
+  const icon   = document.getElementById('musicIcon');
 
   if (!musicPlaying) {
-    iframe.src = 'https://www.youtube.com/embed/PKfeldrA7og?autoplay=1&loop=1&playlist=PKfeldrA7og&controls=0&rel=0';
+    // Nuevo ID: S8TvXhLtLa0 — mute=0 para audio, enablejsapi para control
+    iframe.style.display = 'block';
+    iframe.src = 'https://www.youtube.com/embed/S8TvXhLtLa0?autoplay=1&loop=1&playlist=S8TvXhLtLa0&rel=0&modestbranding=1';
     btn.classList.add('playing');
-    label.textContent = 'Pausar música';
+    label.textContent = '⏸ Pausar música';
+    icon.textContent  = '🎶';
     musicPlaying = true;
   } else {
     iframe.src = '';
+    iframe.style.display = 'none';
     btn.classList.remove('playing');
-    label.textContent = 'Golden Hour — JVKE';
+    label.textContent = '▶ Reproducir Golden Hour';
+    icon.textContent  = '🎵';
     musicPlaying = false;
   }
 }
