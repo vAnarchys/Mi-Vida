@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Ti, Mi Amor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body class="theme-rose" id="app">
+
+  <!-- ════════════ TEMA BOTONES ════════════ -->
+  <div class="theme-switcher" aria-label="Cambiar tema">
+    <button class="theme-btn active" id="btn-rose" onclick="setTheme('rose')" title="Rosa y Morado">
+      🌸
+    </button>
+    <button class="theme-btn" id="btn-ocean" onclick="setTheme('ocean')" title="Azul y Negro">
+      🌊
+    </button>
+  </div>
+
+  <!-- ════════════ CORAZÓN DE ROSAS ════════════ -->
+  <section class="heart-section" id="heartSection">
+    <div class="heart-canvas" id="heartCanvas"></div>
+    <div class="heart-words" id="heartWords">
+      <!-- palabras inyectadas por JS -->
+    </div>
+    <p class="click-hint">Haz clic en cualquier parte ✨</p>
+  </section>
+
+  <!-- ════════════ MÚSICA ════════════ -->
+  <div class="music-section">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+      <span class="music-icon">🎵</span>
+      <span class="music-label">Golden Hour — JVKE</span>
+    </button>
+  </div>
+
+  <!-- Iframe oculto de YouTube -->
+  <iframe
+    id="ytPlayer"
+    src=""
+    style="display:none"
+    allow="autoplay"
+    title="Golden Hour music">
+  </iframe>
+
+  <!-- ════════════ POEMA ════════════ -->
+  <main class="poem-wrap">
+    <header class="poem-header">
+      <div class="ornament">❧</div>
+      <h1 class="poem-title">A la Dama que Tornó mi Sosiego<br/><em>en Dulce Cautiverio</em></h1>
+      <div class="ornament">❧</div>
+    </header>
+
+    <article class="poem-body">
+
+      <section class="stanza opening">
+        <p>No sé por qué designio de los cielos,</p>
+        <p>ni por qué capricho de la fortuna antigua,</p>
+        <p>tu nombre descendió sobre mi vida</p>
+        <p>como desciende la aurora sobre los campos dormidos,</p>
+        <p>ni sé en qué instante preciso dejé de ser dueño de mí mismo</p>
+        <p>para convertirme en vasallo de tu recuerdo.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza">
+        <p>Mas desde que tus ojos habitan mi memoria,</p>
+        <p>cada hora sin noticias tuyas</p>
+        <p>es una lenta daga de ausencia,</p>
+        <p>una estaca de nostalgia hundiéndose en el pecho,</p>
+        <p>una campana triste que resuena en mis costillas</p>
+        <p>anunciando la falta de aquello que más anhelo.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza italic-stanza">
+        <p>Y es extraño.</p>
+        <p>Porque jamás fui hombre dado a los excesos del corazón,</p>
+        <p>ni a los delirios que cantan los poetas</p>
+        <p>cuando la luna les roba la razón.</p>
+        <p class="mt">Mas llegaste tú.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza">
+        <p>Y he aquí que ahora comprendo</p>
+        <p>por qué los trovadores entregaban sus noches a la tinta,</p>
+        <p>por qué los caballeros juraban lealtades imposibles,</p>
+        <p>y por qué los viejos bardos confundían el amor con la fe.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza beauty-stanza">
+        <p class="lead">Pues hay en ti una hermosura</p>
+        <p class="lead">que no cabe únicamente en el espejo.</p>
+        <br />
+        <p>Sí, tus ojos poseen la profundidad de dos noches serenas</p>
+        <p>donde las estrellas parecen haberse refugiado;</p>
+        <p>y tu cabello, oscuro como la tinta con que se escriben las epopeyas,</p>
+        <p>cae con la suavidad de un río secreto</p>
+        <p>que conoce caminos ignorados por los hombres.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza">
+        <p>Mas no es sólo eso.</p>
+        <p>No es únicamente la delicada arquitectura de tu rostro,</p>
+        <p>ni la dulzura inadvertida que se posa en tus labios,</p>
+        <p>ni la gracia con la que la luz parece buscarte</p>
+        <p>para descansar sobre tu piel.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza center-stanza">
+        <p class="big-line">Es algo más.</p>
+        <p>Algo que no saben nombrar los diccionarios.</p>
+        <br />
+        <p>Porque cuando te miro,</p>
+        <p>no veo solamente belleza.</p>
+        <br />
+        <p class="highlight-word">Veo refugio.</p>
+        <br />
+        <p>Veo la promesa de una calma</p>
+        <p>que jamás encontré en ninguna otra parte.</p>
+        <br />
+        <p>Y entonces comprendo que hay personas</p>
+        <p>que son más hogar que muchas casas.</p>
+        <br />
+        <p class="highlight-word">Tú eres una de ellas.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza">
+        <p>Hay en tu presencia una sinceridad tan limpia</p>
+        <p>que junto a ti no siento la necesidad de fingir grandezas,</p>
+        <p>ni de ocultar mis defectos bajo armaduras de orgullo.</p>
+        <br />
+        <p class="highlight-word">A tu lado puedo ser simplemente yo.</p>
+        <br />
+        <p>Y eso, para un corazón cansado,</p>
+        <p>vale más que todos los tesoros de los reyes.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza wish-stanza">
+        <p>Si alguna vez me preguntas qué siento por ti,</p>
+        <p>no sabría responder con la precisión de los sabios.</p>
+        <p>Sólo podría decirte que cada día deseo conocerte más.</p>
+        <br />
+        <p>No la imagen que el mundo contempla.</p>
+        <p class="highlight-word">A ti.</p>
+        <br />
+        <p>Tus alegrías más sencillas.</p>
+        <p>Tus sueños más ambiciosos.</p>
+        <p>Las heridas que escondes cuando sonríes.</p>
+        <p>Las historias que nunca cuentas.</p>
+        <p>Los temores que visitas en silencio.</p>
+        <p>Las canciones que guardas para los días grises.</p>
+        <p>La mujer completa que existe detrás de tus ojos.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza seasons-stanza">
+        <p>Porque amar, creo yo,</p>
+        <p>no es únicamente admirar la primavera de alguien.</p>
+        <br />
+        <p class="highlight-word">Es permanecer también durante sus inviernos.</p>
+        <br />
+        <p>Y si el destino me concediera el privilegio</p>
+        <p>de caminar a tu lado por los años venideros,</p>
+        <p>quisiera aprender cada rincón de tu alma</p>
+        <p>como quien estudia un mapa sagrado.</p>
+        <br />
+        <p>No para cambiar nada.</p>
+        <p>Sino para comprenderlo todo.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza certainty-stanza">
+        <p>Y aunque mi voz carezca de la elocuencia de los grandes poetas,</p>
+        <p>aunque mis manos no sepan construir palacios,</p>
+        <p>ni mis palabras alcancen la altura de lo que mereces,</p>
+        <p>hay una certeza que habita en mí con fuerza inquebrantable:</p>
+        <br />
+        <p class="highlight-word big-line">Que jamás había querido a nadie de esta manera.</p>
+        <p class="highlight-word">Jamás.</p>
+        <br />
+        <p>Porque contigo no imagino días.</p>
+        <p class="highlight-word">Imagino una vida.</p>
+        <p>No imagino momentos.</p>
+        <p class="highlight-word">Imagino caminos.</p>
+        <p>No imagino un capítulo.</p>
+        <p class="highlight-word">Imagino toda la historia.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza loyalty-stanza">
+        <p>Y si alguna vez me permitieras ocupar un lugar junto a ti,</p>
+        <p>hallarías en mí un corazón dispuesto a permanecer.</p>
+        <br />
+        <p>Como el escudero fiel junto a su reina.</p>
+        <p>Como el centinela que no abandona su torre.</p>
+        <p>Como el espartano que defiende su reino</p>
+        <p>con honor cuando llega la batalla,</p>
+        <p>con sangre cuando es necesario,</p>
+        <p>y con lealtad incluso cuando nadie observa.</p>
+        <br />
+        <p>No porque me lo exija el deber.</p>
+        <p class="highlight-word">Sino porque así lo ordena el amor.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza eternal-stanza">
+        <p>Porque si el mundo entero se volviera ruido,</p>
+        <p class="highlight-word">yo escogería seguir escuchando tu voz.</p>
+        <br />
+        <p>Si todos los caminos desaparecieran,</p>
+        <p class="highlight-word">buscaría el que conduzca a ti.</p>
+        <br />
+        <p>Y si la fortuna me arrebatara cuanto poseo,</p>
+        <p>pero me dejara la dicha de contemplarte,</p>
+        <p class="highlight-word">seguiría considerándome un hombre afortunado.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza mystery-stanza">
+        <p>Tal vez sea amor.</p>
+        <p>Tal vez sea algo aún más antiguo.</p>
+        <p>Algo que existía antes de que yo encontrara palabras para nombrarlo.</p>
+        <br />
+        <p>Sólo sé que cuando pienso en el futuro, apareces tú.</p>
+        <p>Y cuando pienso en la felicidad, apareces tú.</p>
+        <p>Y cuando pienso en aquello que jamás quisiera perder,</p>
+        <p class="highlight-word">apareces tú.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza finale-stanza">
+        <p>Por eso hoy deposito estas letras a tus pies,</p>
+        <p>como el peregrino deposita flores en un santuario.</p>
+        <br />
+        <p>No para impresionarte.</p>
+        <p>No para convencerte.</p>
+        <p>Sino para decirte la verdad más pura que conozco:</p>
+        <br />
+        <p class="highlight-word">Que entre todas las maravillas que mis ojos han contemplado,</p>
+        <p class="highlight-word">ninguna ha logrado conmover mi alma</p>
+        <p class="highlight-word">como lo has hecho tú.</p>
+      </section>
+
+      <div class="stanza-sep">✦</div>
+
+      <section class="stanza closing-stanza">
+        <p>Y que si alguna vez me permites caminar junto a tu destino,</p>
+        <br />
+        <p class="closing-line">hallarás en mí un hombre dispuesto a elegirte,</p>
+        <p class="closing-line">una y otra vez,</p>
+        <br />
+        <p class="closing-final">hasta que el tiempo se canse de contar los años.</p>
+      </section>
+
+    </article>
+
+    <footer class="poem-footer">
+      <div class="ornament">❧</div>
+      <p class="footer-rose">🌹</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
